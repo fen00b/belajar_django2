@@ -16,19 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-# Import Http response untuk menampilkan response ()
-from django.http import HttpResponse 
 
-# function view index 
-def index(request):
-    return HttpResponse("Halo dunia!")
+# import views (file views dibuat sendiri)
+from . import views
+# import views, jadi harus di pagil sebelum functuion
+#conth mau panggil index : views.index dsb
 
-# function view about 
-def about(request):
-    return HttpResponse("ini halaman about")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index), # < function index 
-    path('about/', about), # Function about dipake untuk nampilin ini
-]
+    path('', views.index), # < function index 
+    path('about/', views.about), # Function about dipake untuk nampilin ini
+] 
